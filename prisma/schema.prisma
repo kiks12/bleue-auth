@@ -1,0 +1,23 @@
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://postgres:francisjames11@localhost:5432/bleue"
+}
+
+model User {
+  userId      Int     @id @default(autoincrement())
+  username    String  @db.VarChar(50)
+  email       String  @db.VarChar(100)
+  type        String  @db.VarChar(10)
+  password    String? @db.VarChar(1000)
+  address     String  @db.VarChar(512)
+  contact     String  @db.VarChar(20)
+  verified    Boolean
+  skills      String  @db.VarChar(300)
+  description String  @db.VarChar(300)
+  followers   Int     @default(0)
+  likes       Int     @default(0)
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
